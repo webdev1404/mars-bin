@@ -1,0 +1,24 @@
+{
+    "name": "webdev1404/mars-bin",
+    "type": "mars-framework-bin-commands",
+    "description": "Mars Framework Bin Commands",
+    "require": {
+        "webdev1404/mars-framework": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adrian Razvan Chis",
+            "email": "sargon1404@gmail.com"
+        },
+        {
+            "name": "Adrian Razvan Chis",
+            "email": "sargon1404@webdev1404.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mars\\Bin\\": "src/"
+        }
+    }
+}
