@@ -1,20 +1,23 @@
 <?php
 
-namespace Mars\Bin;
+namespace Mars\Bin\Handlers;
+
+use Mars\Bin\Base;
 
 class Cache extends Base
 {
     public protected(set) string $title = 'Clean Cache';
 
-    public protected(set) array $actions = ['cache'];
+    public protected(set) array $roots = ['cache'];
 
     public protected(set) array $commands = [
         'clean'           => 'cleanAll',
         'clean:all'       => 'cleanAll',
         'clean:css'       => 'cleanCss',
-        'clean:js'        => 'cleanJs',
+        'clean:js'        => 'cleanJavascript',
         'clean:data'      => 'cleanData',
         'clean:pages'     => 'cleanPages',
+        'clean:routes'    => 'cleanRoutes',
         'clean:templates' => 'cleanTemplates',
     ];
     
@@ -25,8 +28,14 @@ class Cache extends Base
         'cache:clean:js'        => 'Cleans the JavaScript cache',
         'cache:clean:data'      => 'Cleans the data cache',
         'cache:clean:pages'     => 'Cleans the page cache',
+        'cache:clean:routes'    => 'Cleans the route cache',
         'cache:clean:templates' => 'Cleans the template cache',
     ];
+
+    /**
+     * @internal
+     */
+    protected bool $show_done = true;
 
     /**
      * Cleans all the caches
@@ -39,6 +48,7 @@ class Cache extends Base
         $this->cleanJavascript();
         $this->cleanData();
         $this->cleanPages();
+        $this->cleanRoutes();
         $this->cleanTemplates();
 
         $this->done();
@@ -78,6 +88,15 @@ class Cache extends Base
     {
         $this->doing('Cleaning the Pages cache...');
         $this->app->cache->pages->clean();
+    }
+
+    /**
+     * Cleans the Routes cache
+     */
+    public function cleanRoutes()
+    {
+        $this->doing('Cleaning the Routes cache...');
+        $this->app->cache->routes->clean();
     }
 
     /**
