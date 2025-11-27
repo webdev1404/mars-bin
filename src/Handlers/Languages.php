@@ -16,9 +16,7 @@ class Languages extends Extensions
         'list:all'       => 'listAll',
         'list:available' => 'listAvailable',
         'install'        => 'install',
-        'enable'         => 'enable',
         'upgrade'        => 'upgrade',
-        'disable'        => 'disable',
         'uninstall'      => 'uninstall',
     ];
 
@@ -27,17 +25,13 @@ class Languages extends Extensions
         'languages:list:all'       => 'List all languages',
         'languages:list:available' => 'List all available languages',
         'language:install'         => 'Installs a language',
-        'language:enable'          => 'Enables a language',
         'language:upgrade'         => 'Upgrades a language',
-        'language:disable'         => 'Disables a language',
         'language:uninstall'       => 'Uninstalls a language'
     ];
 
     public protected(set) array $command_help = [
         'language:install' => 'Usage: language:install <language_name> [<language_name> ...]',
-        'language:enable'  => 'Usage: language:enable <language_name> [<language_name> ...]',
         'language:upgrade' => 'Usage: language:upgrade <language_name> [<language_name> ...]',
-        'language:disable' => 'Usage: language:disable <language_name> [<language_name> ...]',
         'language:uninstall'  => 'Usage: language:uninstall <language_name> [<language_name> ...]'
     ];
 
