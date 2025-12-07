@@ -13,6 +13,7 @@ class Cache extends Base
     public protected(set) array $commands = [
         'clean'           => 'cleanAll',
         'clean:all'       => 'cleanAll',
+        'clean:config'        => 'cleanConfig',
         'clean:css'       => 'cleanCss',
         'clean:js'        => 'cleanJavascript',
         'clean:data'      => 'cleanData',
@@ -24,6 +25,7 @@ class Cache extends Base
     public protected(set) array $command_descriptions = [
         'cache:clean'           => 'Cleans all caches',
         'cache:clean:all'       => 'Cleans all caches',
+        'cache:clean:config'    => 'Cleans the config cache',
         'cache:clean:css'       => 'Cleans the CSS cache',
         'cache:clean:js'        => 'Cleans the JavaScript cache',
         'cache:clean:data'      => 'Cleans the data cache',
@@ -44,6 +46,7 @@ class Cache extends Base
     {
         $this->show_done = false;
 
+        $this->cleanConfig();
         $this->cleanCss();
         $this->cleanJavascript();
         $this->cleanData();
@@ -52,6 +55,15 @@ class Cache extends Base
         $this->cleanTemplates();
 
         $this->done();
+    }
+
+    /**
+     * Cleans the Config cache
+     */
+    public function cleanConfig()
+    {
+        $this->doing('Cleaning the Config cache...');
+        $this->app->cache->config->clean();
     }
 
     /**
