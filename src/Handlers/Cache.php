@@ -15,10 +15,11 @@ class Cache extends Base
         'clean:all'       => 'cleanAll',
         'clean:config'        => 'cleanConfig',
         'clean:css'       => 'cleanCss',
-        'clean:js'        => 'cleanJavascript',
+        'clean:js'        => 'cleanJs',
         'clean:data'      => 'cleanData',
         'clean:pages'     => 'cleanPages',
         'clean:routes'    => 'cleanRoutes',
+        'clean:storage'   => 'cleanStorage',
         'clean:templates' => 'cleanTemplates',
     ];
     
@@ -31,6 +32,7 @@ class Cache extends Base
         'cache:clean:data'      => 'Cleans the data cache',
         'cache:clean:pages'     => 'Cleans the page cache',
         'cache:clean:routes'    => 'Cleans the route cache',
+        'cache:clean:storage'   => 'Cleans the storage cache',
         'cache:clean:templates' => 'Cleans the template cache',
     ];
 
@@ -48,12 +50,12 @@ class Cache extends Base
 
         $this->cleanConfig();
         $this->cleanCss();
-        $this->cleanJavascript();
+        $this->cleanJs();
         $this->cleanData();
         $this->cleanPages();
         $this->cleanRoutes();
         $this->cleanTemplates();
-
+        $this->cleanStorage();
         $this->done();
     }
 
@@ -72,16 +74,18 @@ class Cache extends Base
     public function cleanCss()
     {
         $this->doing('Cleaning the CSS cache...');
+        $this->app->cache->css_list->clean();
         $this->app->cache->css->clean();
     }
 
     /**
      * Cleans the Javascript cache
      */
-    public function cleanJavascript()
+    public function cleanJs()
     {
         $this->doing('Cleaning the JavaScript cache...');
-        $this->app->cache->javascript->clean();
+        $this->app->cache->js_list->clean();
+        $this->app->cache->js->clean();
     }
 
     /**
@@ -109,6 +113,15 @@ class Cache extends Base
     {
         $this->doing('Cleaning the Routes cache...');
         $this->app->cache->routes->clean();
+    }
+
+    /**
+     * Cleans the Storage cache
+     */
+    public function cleanStorage()
+    {
+        $this->doing('Cleaning the Storage cache...');
+        $this->app->cache->storage->clean();
     }
 
     /**

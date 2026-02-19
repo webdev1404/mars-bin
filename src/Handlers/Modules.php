@@ -58,7 +58,7 @@ class Modules extends Extensions
 
     /**
      * @see Extensions::install()
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function install()
     {
@@ -69,7 +69,7 @@ class Modules extends Extensions
 
     /**
      * @see Extensions::enable()
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function enable()
     {
@@ -80,7 +80,7 @@ class Modules extends Extensions
 
     /**
      * @see Extensions::upgrade()
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function upgrade()
     {
@@ -91,7 +91,7 @@ class Modules extends Extensions
 
     /**
      * @see Extensions::disable()
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function disable()
     {
@@ -102,7 +102,7 @@ class Modules extends Extensions
 
     /**
      * @see Extensions::uninstall()
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function uninstall()
     {
