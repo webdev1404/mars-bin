@@ -20,6 +20,7 @@ class Cache extends Base
         'clean:pages'     => 'cleanPages',
         'clean:routes'    => 'cleanRoutes',
         'clean:storage'   => 'cleanStorage',
+        'clean:storage:all'   => 'cleanStorageAll',
         'clean:templates' => 'cleanTemplates',
     ];
     
@@ -32,7 +33,8 @@ class Cache extends Base
         'cache:clean:data'      => 'Cleans the data cache',
         'cache:clean:pages'     => 'Cleans the page cache',
         'cache:clean:routes'    => 'Cleans the route cache',
-        'cache:clean:storage'   => 'Cleans the storage cache',
+        'cache:clean:storage'   => 'Cleans the expired storage cache',
+        'cache:clean:storage:all'   => 'Cleans all storage caches, expired or not',
         'cache:clean:templates' => 'Cleans the template cache',
     ];
 
@@ -122,6 +124,12 @@ class Cache extends Base
     {
         $this->doing('Cleaning the Storage cache...');
         $this->app->cache->storage->clean();
+    }
+
+    public function cleanStorageAll()
+    {
+        $this->doing('Cleaning Storage caches (all)...');
+        $this->app->cache->storage->cleanAll();
     }
 
     /**
